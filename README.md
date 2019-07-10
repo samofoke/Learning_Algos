@@ -141,7 +141,7 @@ void push(node_t * head, int val) {
     current->next = malloc(sizeof(node_t));
     current->next->val = val;
     current->next->next = NULL;
-}
+    }
 The best use cases for linked lists are stacks and queues, which we will now implement:
 
 Adding an item to the beginning of the list (pushing to the list)
@@ -161,7 +161,7 @@ void push(node_t ** head, int val) {
     new_node->val = val;
     new_node->next = *head;
     *head = new_node;
-}
+    }
 Removing the first item (popping from the list)
 To pop a variable, we will need to reverse this action:
 
@@ -184,7 +184,7 @@ int pop(node_t ** head) {
     *head = next_node;
 
     return retval;
-}
+    }
 Removing the last item of the list
 Removing the last item from a list is very similar to adding it to the end of the list, but with one big exception - since we have to change one item before the last item, we actually have to look two items ahead and see if the next item is the last one in the list:
 
@@ -208,9 +208,8 @@ int remove_last(node_t * head) {
     free(current->next);
     current->next = NULL;
     return retval;
-
-}
-Removing a specific item
+    }
+#Removing a specific item
 To remove a specific item from the list, either by its index from the beginning of the list or by its value, we will need to go over all the items, continuously looking ahead to find out if we've reached the node before the item we wish to remove. This is because we need to change the location to where the previous node points to as well.
 
 Here is the algorithm:
@@ -244,7 +243,6 @@ int remove_by_index(node_t ** head, int n) {
     free(temp_node);
 
     return retval;
-
-}
+    }
 
  
